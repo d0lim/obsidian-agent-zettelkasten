@@ -51,7 +51,8 @@ GitHub에서 **Use this template** → **Create a new repository** 클릭. 로�
 scripts/switch-lang.sh ko
 ```
 
-모든 `*.ko.md` 소스 파일을 활성 `*.md` 경로로 복사하고, 현재 언어를 `.language` 파일에 기록한다. 영어로 되돌리려면: `scripts/switch-lang.sh en`.
+`.i18n/ko/`에서 언어 파일을 활성 위치로 복사하고, `.language` 파일을 갱신한다.
+영어로 되돌리려면: `scripts/switch-lang.sh en`.
 
 ### 3. 도구 설치
 

@@ -51,7 +51,8 @@ The vault ships with English (`en`) as the default. To switch to Korean:
 scripts/switch-lang.sh ko
 ```
 
-This copies all `*.ko.md` source files to the active `*.md` paths and writes the current language to `.language`. To switch back: `scripts/switch-lang.sh en`.
+This copies language files from `.i18n/ko/` to their active locations and updates `.language`.
+To switch back: `scripts/switch-lang.sh en`.
 
 ### 3. Install tools
 
