@@ -43,7 +43,17 @@ Claudian runs Claude Code natively inside Obsidian and performs hybrid search (k
 
 On GitHub, click **Use this template** → **Create a new repository**. Clone locally and open as a vault in Obsidian.
 
-### 2. Install tools
+### 2. Set language
+
+The vault ships with English (`en`) as the default. To switch to Korean:
+
+```bash
+scripts/switch-lang.sh ko
+```
+
+This copies all `*.ko.md` source files to the active `*.md` paths and writes the current language to `.language`. To switch back: `scripts/switch-lang.sh en`.
+
+### 3. Install tools
 
 ```bash
 # SQLite (required for extension support)
@@ -55,7 +65,7 @@ bun install -g https://github.com/tobi/qmd
 
 > GGUF models (embeddinggemma, qwen3-reranker, Qwen3) are automatically downloaded on first use and cached in `~/.cache/qmd/models/`. No Ollama needed.
 
-### 3. qmd indexing
+### 4. qmd indexing
 
 ```bash
 VAULT="/path/to/your/vault"
@@ -69,7 +79,7 @@ qmd embed
 
 Run `qmd embed` to refresh the index after adding/editing notes.
 
-### 4. Obsidian plugins
+### 5. Obsidian plugins
 
 #### Claudian (install via BRAT)
 

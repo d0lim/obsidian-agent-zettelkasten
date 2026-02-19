@@ -43,7 +43,17 @@ Claudian이 Obsidian 안에서 Claude Code를 네이티브로 실행하고, qmd 
 
 GitHub에서 **Use this template** → **Create a new repository** 클릭. 로컬에 clone한 뒤 Obsidian에서 vault로 열기.
 
-### 2. 도구 설치
+### 2. 언어 설정
+
+기본 언어는 영어(`en`). 한국어로 전환하려면:
+
+```bash
+scripts/switch-lang.sh ko
+```
+
+모든 `*.ko.md` 소스 파일을 활성 `*.md` 경로로 복사하고, 현재 언어를 `.language` 파일에 기록한다. 영어로 되돌리려면: `scripts/switch-lang.sh en`.
+
+### 3. 도구 설치
 
 ```bash
 # SQLite (확장 기능 지원에 필요)
@@ -55,7 +65,7 @@ bun install -g https://github.com/tobi/qmd
 
 > GGUF 모델(embeddinggemma, qwen3-reranker, Qwen3)은 첫 사용 시 자동 다운로드되어 `~/.cache/qmd/models/`에 캐시됩니다. Ollama 불필요.
 
-### 3. qmd 인덱싱
+### 4. qmd 인덱싱
 
 ```bash
 VAULT="/path/to/your/vault"
@@ -69,7 +79,7 @@ qmd embed
 
 노트 추가/수정 후 `qmd embed`로 인덱스 갱신.
 
-### 4. Obsidian 플러그인
+### 5. Obsidian 플러그인
 
 #### Claudian (BRAT으로 설치)
 
