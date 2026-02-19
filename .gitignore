@@ -1,0 +1,15 @@
+.DS_Store
+
+# Obsidian - 개인 상태는 제외, 설정 프리셋은 포함
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/plugins/
+.obsidian/themes/
+.obsidian/hotkeys.json
+
+# Claude Code - 로컬 퍼미션/세션 제외
+.claude/settings.local.json
+.claude/sessions/
+
+# 구현 로그 (template에 불필요)
+docs/plans/
