@@ -46,27 +46,24 @@ On GitHub, click **Use this template** → **Create a new repository**. Clone lo
 ### 2. Install tools
 
 ```bash
-# Ollama (local embedding/reranking)
-brew install ollama
-
-# Ollama models
-ollama pull embeddinggemma
-ollama pull ExpedientFalcon/qwen3-reranker:0.6b-q8_0
-ollama pull qwen3:0.6b
+# SQLite (required for extension support)
+brew install sqlite
 
 # qmd (hybrid search engine)
 bun install -g https://github.com/tobi/qmd
 ```
+
+> GGUF models (embeddinggemma, qwen3-reranker, Qwen3) are automatically downloaded on first use and cached in `~/.cache/qmd/models/`. No Ollama needed.
 
 ### 3. qmd indexing
 
 ```bash
 VAULT="/path/to/your/vault"
 
-qmd add "$VAULT"
-qmd add-context "$VAULT/2-permanent" "Refined permanent notes, core knowledge"
-qmd add-context "$VAULT/1-literature" "Book/article/video summaries"
-qmd add-context "$VAULT/3-project" "Project-specific work notes"
+qmd collection add "$VAULT"
+qmd context add "$VAULT/2-permanent" "Refined permanent notes, core knowledge"
+qmd context add "$VAULT/1-literature" "Book/article/video summaries"
+qmd context add "$VAULT/3-project" "Project-specific work notes"
 qmd embed
 ```
 

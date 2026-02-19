@@ -46,27 +46,24 @@ GitHub에서 **Use this template** → **Create a new repository** 클릭. 로�
 ### 2. 도구 설치
 
 ```bash
-# Ollama (로컬 임베딩/리랭킹)
-brew install ollama
-
-# Ollama 모델
-ollama pull embeddinggemma
-ollama pull ExpedientFalcon/qwen3-reranker:0.6b-q8_0
-ollama pull qwen3:0.6b
+# SQLite (확장 기능 지원에 필요)
+brew install sqlite
 
 # qmd (하이브리드 검색 엔진)
 bun install -g https://github.com/tobi/qmd
 ```
+
+> GGUF 모델(embeddinggemma, qwen3-reranker, Qwen3)은 첫 사용 시 자동 다운로드되어 `~/.cache/qmd/models/`에 캐시됩니다. Ollama 불필요.
 
 ### 3. qmd 인덱싱
 
 ```bash
 VAULT="/path/to/your/vault"
 
-qmd add "$VAULT"
-qmd add-context "$VAULT/2-permanent" "정제된 영구 노트, 핵심 지식"
-qmd add-context "$VAULT/1-literature" "책/아티클/영상 요약"
-qmd add-context "$VAULT/3-project" "프로젝트별 작업 노트"
+qmd collection add "$VAULT"
+qmd context add "$VAULT/2-permanent" "정제된 영구 노트, 핵심 지식"
+qmd context add "$VAULT/1-literature" "책/아티클/영상 요약"
+qmd context add "$VAULT/3-project" "프로젝트별 작업 노트"
 qmd embed
 ```
 
