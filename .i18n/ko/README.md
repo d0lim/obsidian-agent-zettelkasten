@@ -1,6 +1,6 @@
 # Zettelkasten AI Vault
 
-Zettelkasten + qmd + Claudian 기반 AI-driven Second Brain 템플릿.
+Zettelkasten + qmd + Claude Code 기반 AI-driven Second Brain 템플릿.
 
 ## 구조
 
@@ -14,28 +14,22 @@ vault/
 ├── 5-templates/      # 노트 템플릿
 ├── 6-output/         # 발행물, 산출물
 └── .claude/
-    └── commands/     # Claudian slash commands
+    └── commands/     # Claude Code slash commands
 ```
 
 ## 아키텍처
 
 ```
-┌── Obsidian ──────────────────────────────┐
-│                                          │
-│  [Claudian Plugin]                       │
-│   ├── Claude Code (에이전틱 기능)         │
-│   ├── @qmd (MCP 서버 → 하이브리드 검색)  │
-│   ├── @file (vault 파일 직접 참조)       │
-│   └── Inline Edit (노트 직접 수정)       │
-│                                          │
-│  [Vault] ← qmd가 인덱싱                 │
-│   ├── 2-permanent/                       │
-│   ├── 1-literature/                      │
-│   └── ...                                │
-└──────────────────────────────────────────┘
+┌── Obsidian ─────────────────┐    ┌── Claude Code (CLI) ──────┐
+│                             │    │                           │
+│  [Vault] ← qmd가 인덱싱    │    │  claude (에이전틱 CLI)     │
+│   ├── 2-permanent/          │◄──►│  ├── @qmd (MCP → 검색)    │
+│   ├── 1-literature/         │    │  └── /commands (slash)    │
+│   └── ...                   │    │                           │
+└─────────────────────────────┘    └───────────────────────────┘
 ```
 
-Claudian이 Obsidian 안에서 Claude Code를 네이티브로 실행하고, qmd MCP 서버를 통해 vault 전체를 하이브리드 검색(키워드 + 벡터)한다. 노트 작성, 검색, 편집이 Obsidian 한 화면에서 가능.
+Claude Code가 vault 디렉토리에서 CLI로 실행되며, qmd MCP 서버를 통해 vault 전체를 하이브리드 검색(키워드 + 벡터)한다. MCP 설정은 `.mcp.json`에서 자동으로 로드된다.
 
 ## 셋업
 
@@ -62,6 +56,9 @@ brew install sqlite
 
 # qmd (하이브리드 검색 엔진)
 bun install -g https://github.com/tobi/qmd
+
+# Claude Code (AI 에이전트 CLI)
+npm install -g @anthropic-ai/claude-code
 ```
 
 > GGUF 모델(embeddinggemma, qwen3-reranker, Qwen3)은 첫 사용 시 자동 다운로드되어 `~/.cache/qmd/models/`에 캐시됩니다. Ollama 불필요.
@@ -81,23 +78,6 @@ qmd embed
 노트 추가/수정 후 `qmd embed`로 인덱스 갱신.
 
 ### 5. Obsidian 플러그인
-
-#### Claudian (BRAT으로 설치)
-
-1. Settings → Community plugins → Browse → **BRAT** 검색 → 설치 → 활성화
-2. Settings → BRAT → Add Beta Plugin → `https://github.com/YishenTu/claudian` 입력
-3. Settings → Community plugins → **Claudian** 활성화
-
-**Claudian MCP 설정:**
-
-Settings → Claudian → MCP Servers에 추가:
-
-| 항목 | 값 |
-|------|-----|
-| Name | `qmd` |
-| Type | `stdio` |
-| Command | `qmd` |
-| Args | `mcp` |
 
 #### Dataview
 
@@ -119,7 +99,7 @@ Settings → Community plugins → Browse → **Dataview** 검색 → 설치 →
 
 ## Slash Commands
 
-`.claude/commands/`에 정의된 커맨드들. Claudian 채팅에서 `/command-name`으로 호출.
+`.claude/commands/`에 정의된 커맨드들. Claude Code에서 `/command-name`으로 호출.
 
 | 커맨드 | 설명 |
 |--------|------|

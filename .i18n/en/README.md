@@ -1,6 +1,6 @@
 # Zettelkasten AI Vault
 
-AI-driven Second Brain template based on Zettelkasten + qmd + Claudian.
+AI-driven Second Brain template based on Zettelkasten + qmd + Claude Code.
 
 ## Structure
 
@@ -14,28 +14,22 @@ vault/
 ├── 5-templates/      # Note templates
 ├── 6-output/         # Publications, deliverables
 └── .claude/
-    └── commands/     # Claudian slash commands
+    └── commands/     # Claude Code slash commands
 ```
 
 ## Architecture
 
 ```
-┌── Obsidian ──────────────────────────────┐
-│                                          │
-│  [Claudian Plugin]                       │
-│   ├── Claude Code (agentic capabilities) │
-│   ├── @qmd (MCP server → hybrid search)  │
-│   ├── @file (direct vault file reference)│
-│   └── Inline Edit (direct note editing)  │
-│                                          │
-│  [Vault] ← indexed by qmd               │
-│   ├── 2-permanent/                       │
-│   ├── 1-literature/                      │
-│   └── ...                                │
-└──────────────────────────────────────────┘
+┌── Obsidian ─────────────────┐    ┌── Claude Code (CLI) ──────┐
+│                             │    │                           │
+│  [Vault] ← indexed by qmd  │    │  claude (agentic CLI)     │
+│   ├── 2-permanent/          │◄──►│  ├── @qmd (MCP → search)  │
+│   ├── 1-literature/         │    │  └── /commands (slash)    │
+│   └── ...                   │    │                           │
+└─────────────────────────────┘    └───────────────────────────┘
 ```
 
-Claudian runs Claude Code natively inside Obsidian and performs hybrid search (keyword + vector) across the entire vault via the qmd MCP server. Note creation, search, and editing all happen within a single Obsidian window.
+Claude Code runs as a CLI in the vault directory and performs hybrid search (keyword + vector) across the entire vault via the qmd MCP server. MCP configuration is loaded from `.mcp.json` automatically.
 
 ## Setup
 
@@ -62,6 +56,9 @@ brew install sqlite
 
 # qmd (hybrid search engine)
 bun install -g https://github.com/tobi/qmd
+
+# Claude Code (AI agent CLI)
+npm install -g @anthropic-ai/claude-code
 ```
 
 > GGUF models (embeddinggemma, qwen3-reranker, Qwen3) are automatically downloaded on first use and cached in `~/.cache/qmd/models/`. No Ollama needed.
@@ -81,23 +78,6 @@ qmd embed
 Run `qmd embed` to refresh the index after adding/editing notes.
 
 ### 5. Obsidian plugins
-
-#### Claudian (install via BRAT)
-
-1. Settings → Community plugins → Browse → search **BRAT** → Install → Enable
-2. Settings → BRAT → Add Beta Plugin → enter `https://github.com/YishenTu/claudian`
-3. Settings → Community plugins → Enable **Claudian**
-
-**Claudian MCP configuration:**
-
-Settings → Claudian → Add to MCP Servers:
-
-| Field | Value |
-|-------|-------|
-| Name | `qmd` |
-| Type | `stdio` |
-| Command | `qmd` |
-| Args | `mcp` |
 
 #### Dataview
 
@@ -119,7 +99,7 @@ Settings → Community plugins → Browse → search **Dataview** → Install �
 
 ## Slash Commands
 
-Commands defined in `.claude/commands/`. Invoke via `/command-name` in Claudian chat.
+Commands defined in `.claude/commands/`. Invoke via `/command-name` in Claude Code.
 
 | Command | Description |
 |---------|-------------|
