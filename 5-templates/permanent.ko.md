@@ -9,12 +9,12 @@ status: evergreen
 
 # {{title}}
 
-[State a single idea clearly in your own words]
+[하나의 아이디어를 자기 언어로 명확하게 서술]
 
-## Connections
+## 연결
 
 -
 
-## References
+## 출처
 
 -

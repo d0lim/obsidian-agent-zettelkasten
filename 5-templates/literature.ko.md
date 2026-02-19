@@ -9,14 +9,14 @@ source:
 
 # {{title}}
 
-## Key Summary
+## 핵심 요약
 
-[Summarize in your own words, 3-5 sentences]
+[내 언어로 3-5문장 요약]
 
-## Notable Points
+## 인상적인 포인트
 
 -
 
-## My Thoughts / Connections
+## 내 생각 / 연결
 
 -

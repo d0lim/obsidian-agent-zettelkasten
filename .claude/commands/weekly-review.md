@@ -1,22 +1,22 @@
-@qmd 를 사용해서 이번 주 작성/수정된 노트를 기반으로 주간 리뷰를 해줘.
+Use @qmd to perform a weekly review based on notes created/modified this week.
 
-## 작업 순서
+## Steps
 
-1. **이번 주 노트 수집**: qmd search로 최근 7일간 작성된 노트를 검색
-2. **패턴 분석**: 이번 주 다룬 주제들의 공통 패턴이나 흐름을 파악
-3. **연결 발견**: qmd deep_search로 기존 노트와의 새로운 연결점 탐색
-4. **MOC 점검**: 4-moc/ 폴더의 기존 MOC가 업데이트 필요한지 확인
+1. **Collect this week's notes**: Search for notes created in the last 7 days using qmd search
+2. **Analyze patterns**: Identify common themes or trends across this week's topics
+3. **Discover connections**: Use qmd deep_search to find new connections with existing notes
+4. **Check MOCs**: Review whether any MOCs in 4-moc/ need updating
 
-## 출력 형식
+## Output Format
 
-### 이번 주 요약
-- 작성한 노트 목록과 핵심 키워드
+### Weekly Summary
+- List of notes created this week with key topics
 
-### 발견한 연결
-- 노트 간 새로운 연결점 (위키링크 형식으로)
+### Discovered Connections
+- New connections between notes (in wikilink format)
 
-### MOC 업데이트 제안
-- 추가/수정이 필요한 MOC와 구체적 변경 내용
+### MOC Update Suggestions
+- MOCs that need additions/modifications with specific changes
 
-### 다음 주 탐구 주제
-- 이번 주 내용에서 파생된 질문이나 탐구할 방향
+### Next Week's Exploration Topics
+- Questions or directions to explore, derived from this week's content

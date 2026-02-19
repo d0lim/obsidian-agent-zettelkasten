@@ -1,21 +1,21 @@
-@qmd 를 사용해서 현재 열린 노트와 관련된 노트들을 찾아줘.
+Use @qmd to find notes related to the currently open note.
 
-## 작업 순서
+## Steps
 
-1. 현재 노트의 내용을 분석하여 핵심 개념 추출
-2. 각 핵심 개념에 대해 qmd vector_search로 의미 기반 검색
-3. 기존 위키링크와 중복되지 않는 새로운 연결을 찾기
+1. Analyze the current note's content to extract key concepts
+2. Run qmd vector_search for each key concept (semantic search)
+3. Find new connections that don't overlap with existing wikilinks
 
-## 출력 형식
+## Output Format
 
-### 핵심 개념
-- 이 노트의 핵심 개념 나열
+### Key Concepts
+- List the core concepts of this note
 
-### 추천 연결
-각 연결에 대해:
-- **노트**: [[노트명]]
-- **연결 이유**: 왜 관련 있는지 한 줄 설명
-- **연결 강도**: 강/중/약
+### Suggested Connections
+For each connection:
+- **Note**: [[note name]]
+- **Reason**: One-line explanation of why it's related
+- **Strength**: Strong / Medium / Weak
 
-### 추천 위키링크
-현재 노트에 추가할 위키링크를 제안 (어느 문장에 어떤 링크를 넣을지).
+### Suggested Wikilinks
+Propose wikilinks to add to the current note (which sentence, which link).

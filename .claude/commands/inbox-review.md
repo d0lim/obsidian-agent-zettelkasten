@@ -1,19 +1,19 @@
-@qmd 를 사용해서 0-inbox/ 폴더의 노트들을 검토해줘.
+Use @qmd to review notes in the 0-inbox/ folder.
 
-각 노트에 대해:
-1. 내용을 읽고 핵심 아이디어를 파악
-2. qmd deep_search로 vault에서 관련 기존 노트를 검색
-3. 아래 형식으로 정리:
+For each note:
+1. Read the content and identify the core idea
+2. Use qmd deep_search to find related existing notes in the vault
+3. Organize in the format below:
 
-## 📋 Inbox 리뷰
+## Inbox Review
 
-| 파일 | 핵심 내용 | 추천 분류 | 관련 노트 |
-|------|----------|----------|----------|
+| File | Core Content | Suggested Category | Related Notes |
+|------|-------------|-------------------|---------------|
 
-**추천 분류** 기준:
-- `permanent` → 독립적인 아이디어가 명확한 경우
-- `literature` → 외부 소스 요약/정리인 경우
-- `삭제` → 메모 가치가 낮은 경우
-- `보류` → 더 발전시킬 여지가 있는 경우
+**Category criteria:**
+- `permanent` → Clear, standalone idea
+- `literature` → Summary/notes from an external source
+- `delete` → Low-value memo
+- `hold` → Has potential for further development
 
-각 노트를 옮길 때 적절한 템플릿(5-templates/)의 frontmatter 형식에 맞춰줘.
+When moving notes, follow the frontmatter format from the appropriate template in 5-templates/.
